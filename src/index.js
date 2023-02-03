@@ -1,0 +1,1 @@
+import './components/trailer/fetch-trailer';
