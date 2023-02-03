@@ -23,3 +23,4 @@ async function fetchMovie() {
     console.log(`${error}`);
   }
 }
+export default { showMovie, fetchMovie };
