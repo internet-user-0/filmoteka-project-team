@@ -55,11 +55,27 @@ ul {
       min-width: 705px;
       padding: 40px 70px;
       display: flex;
+      align-items: flex-start;
+      gap: 70px;
     }
 
-    @media screen and (min-width: 1280px) {
+    @media screen and (min-width: 1279px) {
       min-width: 805px;
       display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+
+    @media screen and (min-width: 1280px) {
+      font-size: 30px;
+      line-height: 35px;
     }
   }
 
@@ -85,14 +101,25 @@ ul {
   }
 
   &__img {
-    min-width: 240px;
-    max-width: 500px;
+    max-width: 100%;
+
+    max-height: 360px;
     margin: 0;
     display: block;
     border-radius: 5px;
 
     @media screen and (max-width: 320px) {
       margin-bottom: 20px;
+    }
+
+    @media screen and (min-width: 768px) {
+      min-width: 260px;
+      max-height: 370px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      min-width: 375px;
+      max-height: 468px;
     }
   }
 
@@ -150,6 +177,7 @@ ul {
     }
 
     &-descr {
+      font-family: 'Roboto';
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
@@ -171,7 +199,7 @@ ul {
 
     display: flex;
     align-items: center;
-    // justify-content: center;
+    justify-content: center;
     text-align: center;
     padding: 6px;
 
