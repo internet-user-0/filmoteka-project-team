@@ -11,11 +11,10 @@
         </symbol>
 
         <!-- Хрестик -->
-        <symbol id="close" viewBox="0 0 32 32">
-            <path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.1333"
-                d="M8.533 8.533l14.933 14.933"></path>
-            <path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.1333"
-                d="M8.533 23.467l14.933-14.933"></path>
+        <symbol id="cross" viewBox="0 0 32 32">
+            <path
+                d="M29.835 0l-13.835 13.882-13.835-13.882-2.119 2.112 13.842 13.888-13.842 13.889 2.119 2.111 13.835-13.881 13.835 13.881 2.119-2.111-13.842-13.889 13.842-13.888z">
+            </path>
         </symbol>
 
         <!-- Лупа -->
