@@ -1,38 +1,3 @@
-// Костыли. Можно удалять, редактирвоать
-
-const KEY = 'eb611ceade777fa79974e7594715897c';
-
-// ---------------------------------------------------
-// Значение для поика фильмов.
-
-const QUERY = 'matrix';
-// ---------------------------------------------------
-
-let dataArrey;
-
-const fetchCard = async (name, page = 1) => {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&language=en-US&query=${QUERY}&page=1&include_adult=false`
-  );
-  const data = await response.json();
-
-  return data;
-};
-
-fetchCard()
-  .then(data => {
-    dataArrey = data.results;
-
-    // Пример вызова функции разметки карточки
-    filmCardList.insertAdjacentHTML(
-      'beforeend',
-      createFilmCardMarkap(dataArrey)
-    );
-  })
-  .catch(error => {
-    console.log(error);
-  });
-
 /**
     |============================
     | Основной код. Не удалять. Комментировать. Редактировать с премечаниями.
@@ -78,8 +43,8 @@ export function createFilmCardMarkap(dataArrey) {
       </li>`
     )
     .join('');
-  return markap;
-  // filmCardList.insertAdjacentHTML('beforeend', markap);
+  // return markap;                                                      //return не нужен
+  filmCardList.insertAdjacentHTML('beforeend', markap);
 }
 
 // filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(dataArrey));
