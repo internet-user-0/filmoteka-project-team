@@ -5,6 +5,7 @@ ul {
 }
 
 .backdrop {
+  font-family: $fontRoboto;
   padding: 20px 20px 38px 20px;
   position: fixed;
   left: 0;
@@ -29,16 +30,16 @@ ul {
 
 .modal {
   &-info {
-    color: #000;
+    color: $mainFontColor;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: auto;
 
-    z-index: 1000;
+    z-index: 1100;
     padding: 48px 20px 40px;
-    background-color: #fff;
+    background-color: $backgroundColor;
 
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
       0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -62,15 +63,13 @@ ul {
   }
 
   &__title {
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 500;
     font-size: 20px;
-    line-height: 23px;
+    line-height: calc(23px / 20px);
 
     @media screen and (min-width: 1280px) {
       font-size: 30px;
-      line-height: 35px;
+      line-height: calc(35px / 30px);
     }
   }
 
@@ -81,13 +80,13 @@ ul {
     width: 30px;
     height: 30px;
     padding: 0;
-    background-color: #fff;
+    background-color: #e18a8a;
     border: none;
 
     cursor: pointer;
 
     &-icon {
-      fill: #000;
+      fill: $mainFontColor;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -138,25 +137,32 @@ ul {
       color: inherit;
     }
 
+    &--flex {
+      display: flex;
+      gap: 2px;
+    }
+
     &--vote {
       background-color: #ff6b01;
       line-height: 14px;
       border-radius: 5px;
-      padding: 1px 9px;
       color: #fff;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 36px;
       height: 16px;
-      text-align: center;
+      margin: 0;
     }
 
     &--votes {
       background: #f7f7f7;
       line-height: 14px;
       border-radius: 5px;
-      width: fit-content;
-      display: inline-block;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
     }
   }
   &__about {

@@ -1,22 +1,29 @@
-import { fetchModalInfo } from "./fetch-info";
-import { transformGenresOnModal } from "../film-card/fetchGenres";
+import { fetchModalInfo } from './fetch-info';
+import { transformGenresOnModal } from '../film-card/fetchGenres';
 
 const URL_IMG = 'https://image.tmdb.org/t/p/w500';
 
 const backdrop = document.querySelector('.backdrop');
+const modal = document.querySelector('modal-info');
 
-fetchModalInfo(11)
-    .then(data => {
-        createModalsMarkup(data);
-    })
+// fetchModalInfo(11).then(data => {
+//   createModalsMarkup(data);
+// });
 
-
-function createModalsMarkup({ popularity, poster_path, genres, overview, original_title, vote_average, vote_count }) {
-    const markup = `
+function createModalsMarkup({
+  popularity,
+  poster_path,
+  genres,
+  overview,
+  original_title,
+  vote_average,
+  vote_count,
+}) {
+  const markup = `
           <div class="modal-info">
-            <button type="button" class="modal__cross-btn">
-                <svg class="modal__cross-btn-icon" width="14" height="14">
-                    <use href="/src/symbol-defs.svg#cross"></use>
+             <button type="button" class="modal__cross-btn">
+                <svg class="modal__cross-btn-icon" width="20" height="20">
+                    <use href="./cross.svg#cross"></use>
                 </svg>
             </button>
             <img class="modal__img" src="${URL_IMG}${poster_path}" alt="poster" />
@@ -30,13 +37,17 @@ function createModalsMarkup({ popularity, poster_path, genres, overview, origina
                         <li class="modal__item">Genre</li>
                     </ul>
                 <ul class="modal__list">
-                    <li class="modal__item modal__item--bold">
+                    <li class="modal__item modal__item--flex modal__item--bold">
                         <span class="modal__item--vote">${vote_average}</span> /
                         <span class="modal__item--votes">${vote_count}</span>
                     </li>
-                    <li class="modal__item modal__item--bold">${popularity.toFixed(1)}</li>
+                    <li class="modal__item modal__item--bold">${popularity.toFixed(
+                      1
+                    )}</li>
                     <li class="modal__item modal__item--bold">${original_title}</li>
-                    <li class="modal__item modal__item--bold">${transformGenresOnModal(genres)}</li>
+                    <li class="modal__item modal__item--bold">${transformGenresOnModal(
+                      genres
+                    )}</li>
                 </ul>
                 </div>
                 <div class="modal__about">
@@ -49,6 +60,41 @@ function createModalsMarkup({ popularity, poster_path, genres, overview, origina
                 </ul>
             </div>
         </div>
-    `
-    return backdrop.innerHTML = markup;
+    `;
+  return (backdrop.innerHTML = markup);
+}
+
+document.querySelector('.hero').addEventListener('click', openModal);
+
+function openModal(e) {
+  e.preventDefault();
+
+  const card = e.target.closest('li');
+  const filmId = card.dataset.action;
+
+  if (!card) {
+    return;
+  }
+
+  fetchModalInfo(filmId)
+    .then(data => {
+      createModalsMarkup(data);
+    })
+    .catch(error => console.log(error));
+
+  backdrop.classList.toggle('is-hidden');
+
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Escape') {
+      backdrop.innerHTML = '';
+      backdrop.classList.add('is-hidden');
+    }
+  });
+
+  backdrop.addEventListener('click', e => {
+    if (e.target === backdrop) {
+      backdrop.innerHTML = '';
+      backdrop.classList.add('is-hidden');
+    }
+  });
 }
