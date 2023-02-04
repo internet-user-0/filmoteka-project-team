@@ -53,7 +53,7 @@
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
       ),
-      url(../components/library_images/libary-header-bcg_md-@1x.jpg);
+      url(../components/library/library_images/libary-header-bcg_md-@1x.jpg);
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
@@ -62,7 +62,7 @@
           rgba(0, 0, 0, 0.56),
           rgba(0, 0, 0, 0.56)
         ),
-        url(../components//library_images/libary-header-bcg_md-@2x.jpg);
+        url(../components/library/library_images/libary-header-bcg_md-@2x.jpg);
     }
   }
 
@@ -73,7 +73,7 @@
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
       ),
-      url(../components/library_images/libary-header-bcg_lg-@1x.jpg);
+      url(../components/library/library_images/libary-header-bcg_lg-@2x.jpg);
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -83,7 +83,7 @@
           rgba(0, 0, 0, 0.56),
           rgba(0, 0, 0, 0.56)
         ),
-        url(../components/library_images/libary-header-bcg_lg-@2x.jpg);
+        url(../components/library/library_images/libary-header-bcg_lg-@2x.jpg);
     }
   }
 }
