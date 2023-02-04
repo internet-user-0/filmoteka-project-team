@@ -4,6 +4,8 @@ ul {
   padding: 0;
 }
 
+
+
 .backdrop {
   font-family: $fontRoboto;
   padding: 20px 20px 38px 20px;
@@ -43,32 +45,51 @@ ul {
 
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
       0px 2px 1px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
     min-width: 280px;
 
     max-height: 97vh;
 
     @media screen and (min-width: 768px) and (max-width: 1279px) {
       min-width: 705px;
-      padding: 40px 70px;
+      padding: 40px 60px 40px 36px;
       display: flex;
       align-items: flex-start;
-      gap: 70px;
     }
 
     @media screen and (min-width: 1279px) {
       min-width: 805px;
       display: flex;
-      gap: 16px;
+
     }
   }
 
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        flex-direction: row;
+        gap: 68px;
+    }
+
+    @media screen and (min-width: 1279px) {
+        flex-direction: row;
+        gap: 16px;
+    }
+
+
+  }
+
   &__title {
+    margin-top: 20px;
     font-weight: 500;
     font-size: 20px;
     line-height: calc(23px / 20px);
 
     @media screen and (min-width: 1280px) {
       font-size: 30px;
+      margin: 0;
       line-height: calc(35px / 30px);
     }
   }
@@ -80,7 +101,7 @@ ul {
     width: 30px;
     height: 30px;
     padding: 0;
-    background-color: #e18a8a;
+    background-color: #fff;
     border: none;
 
     cursor: pointer;
@@ -114,13 +135,14 @@ ul {
     @media screen and (min-width: 1280px) {
       min-width: 375px;
       max-height: 468px;
+      object-fit: cover;
     }
   }
 
   &__sheet {
     display: flex;
     gap: 40px;
-    margin-bottom: 20px;
+    margin: 20px 0;
   }
 
   &__item {

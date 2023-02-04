@@ -4,11 +4,9 @@ import { transformGenresOnModal } from '../film-card/fetchGenres';
 const URL_IMG = 'https://image.tmdb.org/t/p/w500';
 
 const backdrop = document.querySelector('.backdrop');
-const modal = document.querySelector('modal-info');
+const modal = document.querySelector('.modal-wrap');
+const btnClose = document.querySelector('.modal__cross-btn')
 
-// fetchModalInfo(11).then(data => {
-//   createModalsMarkup(data);
-// });
 
 function createModalsMarkup({
   popularity,
@@ -20,12 +18,6 @@ function createModalsMarkup({
   vote_count,
 }) {
   const markup = `
-          <div class="modal-info">
-             <button type="button" class="modal__cross-btn">
-                <svg class="modal__cross-btn-icon" width="20" height="20">
-                    <use href="./cross.svg#cross"></use>
-                </svg>
-            </button>
             <img class="modal__img" src="${URL_IMG}${poster_path}" alt="poster" />
             <div class="modal__major-container">
                 <h3 class="modal__title">${original_title}</h3>
@@ -38,7 +30,7 @@ function createModalsMarkup({
                     </ul>
                 <ul class="modal__list">
                     <li class="modal__item modal__item--flex modal__item--bold">
-                        <span class="modal__item--vote">${vote_average}</span> /
+                        <span class="modal__item--vote">${vote_average.toFixed(1)}</span> /
                         <span class="modal__item--votes">${vote_count}</span>
                     </li>
                     <li class="modal__item modal__item--bold">${popularity.toFixed(
@@ -61,7 +53,7 @@ function createModalsMarkup({
             </div>
         </div>
     `;
-  return (backdrop.innerHTML = markup);
+  return modal.insertAdjacentHTML('beforeend', markup);
 }
 
 document.querySelector('.hero').addEventListener('click', openModal);
@@ -86,14 +78,19 @@ function openModal(e) {
 
   document.addEventListener('keydown', e => {
     if (e.code === 'Escape') {
-      backdrop.innerHTML = '';
+      modal.innerHTML = '';
       backdrop.classList.add('is-hidden');
     }
   });
 
+  btnClose.addEventListener('click', e => {
+    modal.innerHTML = '';
+    backdrop.classList.add('is-hidden');
+  })
+
   backdrop.addEventListener('click', e => {
     if (e.target === backdrop) {
-      backdrop.innerHTML = '';
+      modal.innerHTML = '';
       backdrop.classList.add('is-hidden');
     }
   });
