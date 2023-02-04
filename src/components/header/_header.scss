@@ -19,7 +19,7 @@
 
     &,
     &:visited {
-      color: white;
+      color: $backgroundColor;
     }
   }
 
@@ -37,12 +37,12 @@
 
       &,
       &:visited {
-        color: white;
+        color: $backgroundColor;
       }
 
       &:hover,
       &.active {
-        border-bottom: 3px solid #FF001B;
+        border-bottom: 3px solid $colorPleaseNote;
       }
     }
   }
@@ -61,7 +61,7 @@
       max-width: 400px;
       display: flex;
       align-items: center;
-      border-bottom: 0.5px solid #FFFFFF;
+      border-bottom: 0.5px solid $backgroundColor;
 
       input {
         font-size: 14px;
@@ -73,7 +73,7 @@
 
         &,
         &::placeholder {
-          color: white;
+          color: $backgroundColor;
         }
       }
 
@@ -90,7 +90,7 @@
       margin-top: 16px;
       font-size: 14px;
       line-height: 16px;
-      color: #FF001B;
+      color: $colorPleaseNote;
       //display: none;  // hide error message by default
     }
   }
