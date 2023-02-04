@@ -1,28 +1,27 @@
 const btn = document.querySelector('.trailer-btn');
 const body = document.querySelector('body');
 const content = document.querySelector('.modal-trailer');
-const backdrop = document.querySelector('.backdrop');
-let movieId = '62d5aea104b596005413b551';
+const backdrop = document.querySelector('.trailer-backdrop');
+let movieId = '8';
 
 btn.addEventListener('click', onBtnClick);
 
 function onBtnClick() {
-  // body.classList.add('backdrop');
-  // backdrop.classList.remove('is-hidden');
+  backdrop.classList.remove('is-hidden');
   fetchTrailer(movieId).then(data => {
-    console.log(data);
     let key = data.results[0].key;
-    createMarkup(key);
+    let name = data.results[0].name;
+    createMarkup(key, name);
   });
 }
 
-function createMarkup(key) {
-  body.insertAdjacentHTML(
+function createMarkup(key, name) {
+  content.insertAdjacentHTML(
     'beforeend',
 
-    `
+    `<h2 class="trailer-modal-title">${name}</h2>
       <iframe
-        class="js-trailer modal-window"
+        class="js-iframe"
       src="https://www.youtube.com/embed/${key}"
       width="640"
       height="360"
