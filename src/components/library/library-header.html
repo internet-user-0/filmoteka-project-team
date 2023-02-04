@@ -1,0 +1,46 @@
+<!--Еще класс container--header -->
+
+<div class="container">
+  <nav class="header-nav">
+    <a
+      href="https://internet-user-0.github.io/filmoteka-project-team/"
+      class="logo"
+      ><svg class="logo__svg">
+        <use href="./images/logo_sprite.svg#film_logo"></use></svg
+      ><span class="logo__text">Filmoteka </span></a
+    >
+    <ul class="pages-nav">
+      <li class="pages-nav__item">
+        <a class="pages-nav__link" href="../../index.html">home</a>
+      </li>
+      <li>
+        <a
+          class="pages-nav__link pages-nav__link--current"
+          href="../../library.html"
+          >my library</a
+        >
+      </li>
+    </ul>
+  </nav>
+
+  <ul class="library-buttons">
+    <li class="library-btn__item">
+      <button
+        type="button"
+        class="library-btn library-btn--watched current"
+        data-btn="watched"
+      >
+        Watched
+      </button>
+    </li>
+    <li class="library-btn__item">
+      <button
+        type="button"
+        class="library-btn library-btn-queue"
+        data-btn="queue"
+      >
+        queue
+      </button>
+    </li>
+  </ul>
+</div>
