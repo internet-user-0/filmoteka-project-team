@@ -7,7 +7,7 @@
 // Импорт функции преобразования жанров
 import { transformGenres } from './fetchGenres';
 
-const filmCardList = document.querySelector('.hero__list');
+// const filmCardList = document.querySelector('.hero__list');
 
 // Переменная базового URL к картинке постера
 const POSTER_PATH = 'https://image.tmdb.org/t/p/w500';
@@ -43,8 +43,8 @@ export function createFilmCardMarkap(dataArrey) {
       </li>`
     )
     .join('');
-  // return markap;                                                      //return не нужен
-  filmCardList.insertAdjacentHTML('beforeend', markap);
+  return markap;
+  // filmCardList.insertAdjacentHTML('beforeend', markap);
 }
 
 // filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(dataArrey));
