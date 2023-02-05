@@ -1,0 +1,10 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <symbol id="cross" viewBox="0 0 32 32">
+            <path
+                d="M29.835 0l-13.835 13.882-13.835-13.882-2.119 2.112 13.842 13.888-13.842 13.889 2.119 2.111 13.835-13.881 13.835 13.881 2.119-2.111-13.842-13.889 13.842-13.888z">
+            </path>
+        </symbol>
+    </defs>
+</svg>

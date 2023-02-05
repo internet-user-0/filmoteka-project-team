@@ -1,1 +1,16 @@
-<button class="btn" type="button">click trailer</button>
+<!-- цю кнопку додати на картку -->
+<button class="trailer-btn" type="button">
+  <svg class="trailer-svg" width="65" height="55">
+    <use href="/src/symbol-defs.svg#youtube"></use>
+  </svg>
+</button>
+
+<div class="trailer-backdrop is-hidden">
+  <div class="modal-trailer">
+    <button type="button" class="modal__cross-btn js-modal-close">
+      <svg class="modal__cross-btn-icon" width="14" height="14">
+        <use href="/src/symbol-defs.svg#cross"></use>
+      </svg>
+    </button>
+  </div>
+</div>

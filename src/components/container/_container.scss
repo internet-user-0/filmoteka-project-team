@@ -4,7 +4,7 @@
   padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
-  outline: 1px solid tomato;
+  // outline: 1px solid tomato;
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
@@ -13,5 +13,20 @@
   }
   @media screen and (min-width: 1280px) {
     max-width: 1281px;
+  }
+}
+
+// Клас .section актуален для основной секции
+//   для main-section и library-section
+
+.section {
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  // outline: 1px solid blue;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 }
