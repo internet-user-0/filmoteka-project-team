@@ -17,7 +17,6 @@
   }
 }
 .film-card {
-  // list-style: none;
   width: 280px;
   min-height: 443px;
 
@@ -62,7 +61,7 @@
     font-size: 12px;
     line-height: 14px;
     text-transform: uppercase;
-    color: #000000;
+    color: $mainFontColor;
 
     @media screen and (min-width: 1280px) {
       font-size: 20px;
@@ -72,26 +71,38 @@
   &__thumb-info {
     display: flex;
   }
-  &__genre,
-  &__line,
-  &__year {
+  &__genre {
     // font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
     color: $colorAccent;
+    margin-right: 10px;
 
     @media screen and (min-width: 1280px) {
       font-size: 20px;
       line-height: 24px;
     }
   }
-  &__line {
-    margin: 0px 5px;
-  }
+  &__rating {
+    background-color: $colorAccent;
+    // line-height: 14px;
+    border-radius: 3px;
+    color: $backgroundColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 17px;
+    // margin: 0;
+    font-size: 12px;
 
-  &__raiting {
-    text-align: center;
+    @media screen and (min-width: 1280px) {
+      width: 46px;
+      height: 25px;
+      font-size: 18px;
+      border-radius: 5px;
+    }
   }
 }

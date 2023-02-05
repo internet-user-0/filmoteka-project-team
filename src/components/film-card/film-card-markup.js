@@ -1,9 +1,3 @@
-/**
-    |============================
-    | Основной код. Не удалять. Комментировать. Редактировать с премечаниями.
-    |============================
-  */
-
 // Импорт функции преобразования жанров
 import { transformGenres } from './fetchGenres';
 
@@ -35,9 +29,10 @@ export function createFilmCardMarkap(dataArrey) {
         </div>
         <h2 class="film-card__title">${title}</h2>
         <div class="film-card__thumb-info">
-          <p class="film-card__genre">${transformGenres(genre_ids)}</p>
-          <p class="film-card__line">|</p>
-          <p class="film-card__year">${release_date.slice(0, 4)}</p>
+        <p class="film-card__genre">${transformGenres(
+          genre_ids.slice(0, 2)
+        )} | ${release_date.slice(0, 4)}</p>
+          <span class="film-card__rating">${vote_average.toFixed(1)}</span>
           
         </div>
       </li>`
@@ -46,5 +41,3 @@ export function createFilmCardMarkap(dataArrey) {
   return markap;
   // filmCardList.insertAdjacentHTML('beforeend', markap);
 }
-
-// filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(dataArrey));
