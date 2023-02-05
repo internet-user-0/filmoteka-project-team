@@ -5,7 +5,7 @@
   margin-left: auto;
   margin-right: auto;
   outline: 1px solid tomato;
-  //   нужно добавить BCG!!!
+
   @media screen and (min-width: 768px) {
     max-width: 768px;
     padding-left: 32px;
@@ -22,7 +22,7 @@
 .container--header {
   height: 230px;
   padding-top: 40px;
-  // 	background-color: #c4c4c4;
+
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -105,6 +105,7 @@
 .logo__svg {
   width: 24px;
   height: 24px;
+  fill: currentColor;
 
   //   @media screen and (min-width: 768px) {
   //     width: 24px;
