@@ -1,38 +1,46 @@
-.footer {
-    background-color:$bgcFooter;
-    padding: 48px 29px 36px;
-    
+.footer__container {
+    min-width: 320px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    background: $bgcFooter;
 
     @media screen and (min-width: 768px) {
-        padding: 30px 0px;
+        min-width: 768px;
+        padding-left: 32px;
+        padding-right: 32px;
     }
-
     @media screen and (min-width: 1280px) {
-        padding: 29px 0px;
+        max-width: 1281px;
     }
 }
-.footer_container {
-    
-    outline: none;
 
+.footer__icon {
+    fill: $colorAccent;
+    width: 14px;
+    height: 13px;
 }
-
-.footer_text {
-    max-width: 250px;
-    margin: 0 auto;
+.footer__list {
+    align-items: center;
     text-align: center;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    color: #545454;
+    justify-content: center;
+    color: $shadowColorFooter;
 
     @media screen and (min-width: 768px) {
-        width: auto;
-        font-size: 16px;
-        line-height: 19px;
+        display: flex;
     }
 }
 
-.footer_text-svg {
-   fill: #FF6B08;
+.footer__item{
+    
+    white-space: nowrap;
+}
+.footer__text-students {
+    color: $shadowColorFooter;
+    text-decoration: none;
 }
