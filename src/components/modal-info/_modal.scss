@@ -4,7 +4,10 @@ ul {
   padding: 0;
 }
 
+
+
 .backdrop {
+  font-family: $fontRoboto;
   padding: 20px 20px 38px 20px;
   position: fixed;
   left: 0;
@@ -29,48 +32,65 @@ ul {
 
 .modal {
   &-info {
-    color: #000;
+    color: $mainFontColor;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: auto;
 
-    z-index: 1000;
+    z-index: 1100;
     padding: 48px 20px 40px;
-    background-color: #fff;
+    background-color: $backgroundColor;
 
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
       0px 2px 1px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
     min-width: 280px;
 
     max-height: 97vh;
 
     @media screen and (min-width: 768px) and (max-width: 1279px) {
       min-width: 705px;
-      padding: 40px 70px;
+      padding: 40px 60px 40px 36px;
       display: flex;
       align-items: flex-start;
-      gap: 70px;
     }
 
     @media screen and (min-width: 1279px) {
       min-width: 805px;
       display: flex;
-      gap: 16px;
+
     }
   }
 
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        flex-direction: row;
+        gap: 68px;
+    }
+
+    @media screen and (min-width: 1279px) {
+        flex-direction: row;
+        gap: 16px;
+    }
+
+
+  }
+
   &__title {
-    font-family: 'Roboto';
-    font-style: normal;
+    margin-top: 20px;
     font-weight: 500;
     font-size: 20px;
-    line-height: 23px;
+    line-height: calc(23px / 20px);
 
     @media screen and (min-width: 1280px) {
       font-size: 30px;
-      line-height: 35px;
+      margin: 0;
+      line-height: calc(35px / 30px);
     }
   }
 
@@ -87,7 +107,7 @@ ul {
     cursor: pointer;
 
     &-icon {
-      fill: #000;
+      fill: $mainFontColor;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -115,13 +135,14 @@ ul {
     @media screen and (min-width: 1280px) {
       min-width: 375px;
       max-height: 468px;
+      object-fit: cover;
     }
   }
 
   &__sheet {
     display: flex;
     gap: 40px;
-    margin-bottom: 20px;
+    margin: 20px 0;
   }
 
   &__item {
@@ -138,25 +159,32 @@ ul {
       color: inherit;
     }
 
+    &--flex {
+      display: flex;
+      gap: 2px;
+    }
+
     &--vote {
       background-color: #ff6b01;
       line-height: 14px;
       border-radius: 5px;
-      padding: 1px 9px;
       color: #fff;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 36px;
       height: 16px;
-      text-align: center;
+      margin: 0;
     }
 
     &--votes {
       background: #f7f7f7;
       line-height: 14px;
       border-radius: 5px;
-      width: fit-content;
-      display: inline-block;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
     }
   }
   &__about {
