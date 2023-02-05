@@ -43,7 +43,7 @@ export function createFilmCardMarkap(dataArrey) {
       </li>`
     )
     .join('');
-  return markap; //return не нужен
+  return markap;
   // filmCardList.insertAdjacentHTML('beforeend', markap);
 }
 

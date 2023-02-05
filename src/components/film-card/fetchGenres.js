@@ -47,22 +47,22 @@ export function transformGenres(genreIds) {
 //  Трансформация жанров в строку для модалки
 
 export function transformGenresOnModal(genres) {
-    const genreArr = JSON.parse(localStorage.getItem(KEY_STORAGE_GENRES));
-    const newArr = [];
-    let genresString = '';
+  const genreArr = JSON.parse(localStorage.getItem(KEY_STORAGE_GENRES));
+  const newArr = [];
+  let genresString = '';
 
-    if (genreArr) {
-        genres.forEach(genre => {
-            genreArr.map(genreI => {
-                if (genreI.id === genre.id) {
-                    newArr.push(genreI.name);
-                    genresString = newArr[0];
-                }
-            });
-        })
-    }
+  if (genreArr) {
+    genres.forEach(genre => {
+      genreArr.map(genreI => {
+        if (genreI.id === genre.id) {
+          newArr.push(genreI.name);
+          genresString = newArr[0];
+        }
+      });
+    });
+  }
 
-    return genresString
+  return genresString;
 }
 
 // console.log(transformGenres([28, 18]));

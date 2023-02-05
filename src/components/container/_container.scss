@@ -15,3 +15,18 @@
     max-width: 1281px;
   }
 }
+
+// Клас .section актуален для основной секции
+//   для main-section и library-section
+
+.section {
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  outline: 1px solid blue;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
