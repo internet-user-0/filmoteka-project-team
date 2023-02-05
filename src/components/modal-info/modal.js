@@ -5,8 +5,7 @@ const URL_IMG = 'https://image.tmdb.org/t/p/w500';
 
 const backdrop = document.querySelector('.backdrop');
 const modal = document.querySelector('.modal-wrap');
-const btnClose = document.querySelector('.modal__cross-btn')
-
+const btnClose = document.querySelector('.modal__cross-btn');
 
 function createModalsMarkup({
   popularity,
@@ -30,7 +29,9 @@ function createModalsMarkup({
                     </ul>
                 <ul class="modal__list">
                     <li class="modal__item modal__item--flex modal__item--bold">
-                        <span class="modal__item--vote">${vote_average.toFixed(1)}</span> /
+                        <span class="modal__item--vote">${vote_average.toFixed(
+                          1
+                        )}</span> /
                         <span class="modal__item--votes">${vote_count}</span>
                     </li>
                     <li class="modal__item modal__item--bold">${popularity.toFixed(
@@ -86,7 +87,7 @@ function openModal(e) {
   btnClose.addEventListener('click', e => {
     modal.innerHTML = '';
     backdrop.classList.add('is-hidden');
-  })
+  });
 
   backdrop.addEventListener('click', e => {
     if (e.target === backdrop) {
