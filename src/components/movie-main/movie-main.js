@@ -9,12 +9,11 @@ let page = 1;
 
 showMovie();
 
-// ---------Добавил (перенес) с film-card-markap-------
 const filmCardList = document.querySelector('.hero__list');
 
 function showMovie() {
   fetchPopularMovie(page)
-    // ------Изменил .then-------
+
     .then(dataArrey => {
       filmCardList.insertAdjacentHTML(
         'beforeend',
