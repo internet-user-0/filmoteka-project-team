@@ -1,6 +1,6 @@
 .footer {
     background-color:$bgcFooter;
-    padding: 29px 0px;
+    padding: 48px 29px 36px;
     
 
     @media screen and (min-width: 768px) {
@@ -11,15 +11,15 @@
         padding: 29px 0px;
     }
 }
-
-.container .footer_container {
+.footer_container {
+    
     outline: none;
 
 }
 
 .footer_text {
+    max-width: 250px;
     margin: 0 auto;
-    width: 250px;
     text-align: center;
     font-weight: 400;
     font-size: 14px;
