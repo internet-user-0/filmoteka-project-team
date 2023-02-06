@@ -102,7 +102,7 @@
   .header_main {
     background-image: url(../images/header-bg-small.png);
 
-    .logo {
+    &__logo {
       margin-left: 20px;
 
       span {
@@ -110,7 +110,7 @@
       }
     }
 
-    .menu {
+    &__menu {
       margin-right: 20px;
     }
   }
