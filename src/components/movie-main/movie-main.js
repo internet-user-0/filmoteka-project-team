@@ -53,7 +53,7 @@ const searchForm = document.forms[0];
 const searchInput = searchForm[1]
 const searchButton = searchForm[2]
 
-const errorMessage = document.querySelector('.error')
+const errorMessage = document.querySelector('div[id="search_error"]')
 errorMessage.style.opacity = "0"
 errorMessage.style.transition = "opacity 0.5s"
 
