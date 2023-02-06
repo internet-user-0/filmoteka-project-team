@@ -5,7 +5,6 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  height: 216px;
   background: url(../images/header-bg.png) no-repeat center;
   background-size: 100% 100%;
 
@@ -54,6 +53,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin: 40px 0 33px;
 
     &__search {
       border: none;
@@ -93,7 +93,7 @@
       font-size: 14px;
       line-height: 16px;
       color: $colorPleaseNote;
-      //display: none;  // hide error message by default
+      visibility: hidden; // hide error message by default
     }
   }
 }
