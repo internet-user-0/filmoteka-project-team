@@ -1,5 +1,4 @@
-
-import './components/trailer/fetch-trailer';
+import './components/trailer/trailer';
 
 import './components/search-movie/search-render';
 import './components/movie-main/movie-main';
