@@ -1,4 +1,5 @@
 import { fetchTrailer } from './fetch-trailer';
+import { filmId } from '../modal-info/modal';
 
 const openBtn = document.querySelector('.trailer-btn');
 const content = document.querySelector('.trailer-wrap');
@@ -12,10 +13,7 @@ document.addEventListener('keydown', onEscapePress);
 
 function onTrailerOpen() {
   backdrop.classList.remove('is-hidden');
-  const card = document.querySelector('.film-card');
-  const movieId = card.getAttribute('data-action');
-
-  fetchTrailer(movieId)
+  fetchTrailer(filmId)
     .then(data => {
       let key = data.results[0].key;
       let name = data.results[0].name;
