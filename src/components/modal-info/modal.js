@@ -92,8 +92,12 @@ function createModalsMarkup({ popularity, poster_path, genres, overview, origina
                 <p class="modal__about-descr">${overview}</p>
                 </div>
                 <ul class="modal__btn-container">
-                <li class="modal__btn modal__btn--watched">Add to Watched</li>
-                <li class="modal__btn modal__btn--queue">Add to queue</li>
+                  <li>
+                    <button type="button" class="modal__btn modal__btn--watched">Add to Watched</button>
+                  </li>
+                  <li>
+                    <button type="button" class="modal__btn modal__btn--queue">Add to queue</button>
+                  </li>
                 </ul>
             </div>
         </div>
