@@ -18,12 +18,19 @@ export function createFilmCardMarkap(dataArrey) {
         genre_ids,
         poster_path,
         vote_average,
-      }) => `<li class="film-card" data-action="${id}">
+      }) => {
+        let poster = ``;
+        if (poster_path) {
+          poster = `${POSTER_PATH}${poster_path}`;
+        } else {
+          poster = 'https://live.staticflickr.com/65535/52673964597_7ac974f3b4_k.jpg';
+        }
+        return `<li class="film-card" data-action="${id}">
         <div class="film-card__img-thumb">
           <a class="film-card__link" href="#"
             ><img
               class="film-card__img"
-              src="${POSTER_PATH}${poster_path}"
+              src="${poster}"
               alt="movie poster"
           /></a>
         </div>
@@ -35,7 +42,8 @@ export function createFilmCardMarkap(dataArrey) {
           <span class="film-card__rating">${vote_average.toFixed(1)}</span>
           
         </div>
-      </li>`
+        </li>`
+      }
     )
     .join('');
   return markap;
