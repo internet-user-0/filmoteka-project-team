@@ -1,5 +1,5 @@
 import API from '../../api';
-import {createFilmCardMarkap} from '../film-card/film-card-markup';
+import { createFilmCardMarkap } from '../film-card/film-card-markup';
 
 const axios = require('axios').default;
 
@@ -13,7 +13,6 @@ const filmCardList = document.querySelector('.hero__list');
 
 function showMovie() {
   fetchPopularMovie(page)
-
     .then(dataArrey => {
       filmCardList.insertAdjacentHTML(
         'beforeend',
@@ -34,15 +33,11 @@ async function fetchPopularMovie(page) {
     page += 1;
     console.log(response.data);
     console.log(response.data.results);
+
     return response.data.results;
   } catch (error) {
     console.log(`${error}`);
   }
 }
 
-
 export default {showMovie, fetchPopularMovie};
-
-
-
-
