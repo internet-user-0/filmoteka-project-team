@@ -7,11 +7,11 @@ const API_KEY = '7b4917c1c89b56950d6ac1f3ef5382d2';
 const BASE_URL = 'https://api.themoviedb.org/3';
 let page = 1;
 
-showMovie();
+showMovie(page);
 
 const filmCardList = document.querySelector('.hero__list');
 
-function showMovie() {
+function showMovie(page) {
   fetchPopularMovie(page)
     .then(dataArrey => {
       filmCardList.insertAdjacentHTML(
