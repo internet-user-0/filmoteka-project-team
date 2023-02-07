@@ -10,6 +10,8 @@ const refs = {
   btnClose: document.querySelector('.modal__cross-btn'),
   body: document.querySelector('body')
 }
+// --виніс id в окрему змінну
+let filmId
 
 const { backdrop, modal, filmList, btnClose, body } = refs;
 
@@ -20,7 +22,8 @@ function OnOpenModal(e) {
   e.preventDefault();
 
   const card = e.target.closest('li');
-  const filmId = card.dataset.action;
+  // --виніс id в окрему змінну
+  filmId = card.dataset.action;
 
   if (!card) {
     return;
@@ -104,3 +107,5 @@ function createModalsMarkup({ popularity, poster_path, genres, overview, origina
     `;
   return modal.insertAdjacentHTML('beforeend', markup);
 }
+
+export { filmId };
