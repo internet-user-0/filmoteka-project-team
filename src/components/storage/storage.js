@@ -1,4 +1,4 @@
-const addToStorage = (key, value) => {
+export const addToStorage = (key, value) => {
   try {
     if (typeof value === 'string') {
       localStorage.setItem(key, value);
@@ -10,7 +10,7 @@ const addToStorage = (key, value) => {
   }
 };
 
-const getFromStorage = key => {
+export const getFromStorage = key => {
   try {
     return JSON.parse(localStorage.getItem(key));
   } catch {
@@ -18,12 +18,10 @@ const getFromStorage = key => {
   }
 };
 
-const removeFromStorage = key => {
+export const removeFromStorage = key => {
   try {
     localStorage.removeItem(key);
   } catch {
     console.error(error);
   }
 };
-
-export default { addToStorage, getFromStorage, removeFromStorage };
