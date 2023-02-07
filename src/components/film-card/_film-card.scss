@@ -19,6 +19,7 @@
 .film-card {
   width: 280px;
   min-height: 443px;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 336px;
@@ -28,6 +29,25 @@
   @media screen and (min-width: 1280px) {
     width: 390px;
     min-height: 634px;
+  }
+
+  &:hover .film-card__title,
+  &:focus .film-card__title {
+    // text-decoration: underline;
+    transform: translate(30px, -4px);
+  }
+
+  &:hover .film-card__img,
+  &:focus .film-card__img {
+    scale: 0.98;
+    box-shadow: 0px 0px 10px 4px gray;
+  }
+  &:hover .film-card__rating,
+  &:focus .film-card__rating {
+    // scale: 1.5;
+    // translate: 30px, 0px;
+    transform: translate(12px, 4px) scale(1.4);
+    box-shadow: 0px 0px 2px 1px gray;
   }
 
   &__img-thumb {
@@ -57,12 +77,6 @@
 
     transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1),
       box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-    &:hover,
-    &:focus {
-      scale: 0.98;
-      box-shadow: 0px 0px 10px 4px gray;
-    }
   }
   &__title {
     // font-family: 'Roboto';
@@ -73,6 +87,8 @@
     text-transform: uppercase;
     color: $mainFontColor;
 
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
     @media screen and (min-width: 1280px) {
       font-size: 20px;
       line-height: 24px;
@@ -82,7 +98,6 @@
     display: flex;
   }
   &__genre {
-    // font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -97,7 +112,7 @@
   }
   &__rating {
     background-color: $colorAccent;
-    // line-height: 14px;
+
     border-radius: 3px;
     color: $backgroundColor;
     display: flex;
@@ -107,8 +122,10 @@
 
     width: 36px;
     height: 16px;
-    // margin: 0;
+
     font-size: 12px;
+
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     @media screen and (min-width: 1280px) {
       width: 40px;

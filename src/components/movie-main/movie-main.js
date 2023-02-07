@@ -1,5 +1,5 @@
 import API from '../../api';
-import {createFilmCardMarkap} from '../film-card/film-card-markup';
+import { createFilmCardMarkap } from '../film-card/film-card-markup';
 
 const axios = require('axios').default;
 
@@ -13,7 +13,6 @@ const filmCardList = document.querySelector('.hero__list');
 
 function showMovie() {
   fetchPopularMovie(page)
-
     .then(dataArrey => {
       filmCardList.insertAdjacentHTML(
         'beforeend',
@@ -34,70 +33,67 @@ async function fetchPopularMovie(page) {
     page += 1;
     console.log(response.data);
     console.log(response.data.results);
+
     return response.data.results;
   } catch (error) {
     console.log(`${error}`);
   }
 }
 
-export default {showMovie, fetchPopularMovie};
-
+export default { showMovie, fetchPopularMovie };
 
 //=======================================Пошук по ключовому слову===============================
 
-
-import {getMoviesByName} from "../../api.js";
-
+import { getMoviesByName } from '../../api.js';
 
 const searchForm = document.forms[0];
-const searchInput = searchForm[1]
-const searchButton = searchForm[2]
+const searchInput = searchForm[1];
+const searchButton = searchForm[2];
 
-const errorMessage = document.querySelector('div[id="search_error"]')
-errorMessage.style.opacity = "0"
-errorMessage.style.transition = "opacity 0.5s"
+const errorMessage = document.querySelector('div[id="search_error"]');
+errorMessage.style.opacity = '0';
+errorMessage.style.transition = 'opacity 0.5s';
 
-searchButton.addEventListener('click', (e) => {
-  e.preventDefault()
+searchButton.addEventListener('click', e => {
+  e.preventDefault();
   if (!searchInput.value.trim()) {
-    errorMessage.style.opacity = "1"
-    setTimeout(errorInfoHidden, 3000)
+    errorMessage.style.opacity = '1';
+    setTimeout(errorInfoHidden, 3000);
 
-    return
+    return;
   }
 
-  getMovie()
+  getMovie();
 
-  searchForm.reset()
-})
-searchInput.addEventListener('input', (e) => {
-  e.preventDefault()
+  searchForm.reset();
+});
+searchInput.addEventListener('input', e => {
+  e.preventDefault();
   getMoviesByName(searchInput.value.trim(), 1)
-    .then((data) => {
-      data.map(({title}) => {
-        console.log(title)
-      })
+    .then(data => {
+      data.map(({ title }) => {
+        console.log(title);
+      });
     })
 
-    .catch(error => console.log(error))
-})
+    .catch(error => console.log(error));
+});
 
 function getMovie() {
   getMoviesByName(searchInput.value.trim(), 1)
     .then(data => {
       if (!data.length) {
-        errorMessage.style.opacity = "1"
-        setTimeout(errorInfoHidden, 3000)
-        return
+        errorMessage.style.opacity = '1';
+        setTimeout(errorInfoHidden, 3000);
+        return;
       }
-      filmCardList.innerHTML = ''
+      filmCardList.innerHTML = '';
 
-      filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(data))
+      filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(data));
     })
     .catch(error => console.log(error));
 }
 
 function errorInfoHidden() {
-  errorMessage.style.opacity = "0"
+  errorMessage.style.opacity = '0';
 }
-
