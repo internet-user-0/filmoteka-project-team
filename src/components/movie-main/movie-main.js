@@ -1,5 +1,5 @@
 import API from '../../api';
-import { createFilmCardMarkap } from '../film-card/film-card-markup';
+import {createFilmCardMarkap} from '../film-card/film-card-markup';
 
 const axios = require('axios').default;
 
@@ -40,4 +40,9 @@ async function fetchPopularMovie(page) {
   }
 }
 
-export default { showMovie, fetchPopularMovie };
+
+export default {showMovie, fetchPopularMovie};
+
+
+
+

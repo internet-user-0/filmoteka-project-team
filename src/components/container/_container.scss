@@ -4,12 +4,12 @@
   padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
-  outline: 1px solid tomato;
+  // outline: 1px solid tomato;
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 30.5px;
+    padding-right: 30.5px;
   }
   @media screen and (min-width: 1280px) {
     max-width: 1281px;
@@ -23,7 +23,7 @@
   padding-top: 20px;
   padding-bottom: 40px;
 
-  outline: 1px solid blue;
+  // outline: 1px solid blue;
 
   @media screen and (min-width: 768px) {
     padding-top: 60px;

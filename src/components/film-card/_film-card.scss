@@ -10,14 +10,13 @@
   // justify-content: center;
 
   @media screen and (min-width: 768px) {
-    gap: 32px;
+    gap: 30.5px;
   }
   @media screen and (min-width: 1280px) {
     gap: 16px;
   }
 }
 .film-card {
-  // list-style: none;
   width: 280px;
   min-height: 443px;
 
@@ -27,7 +26,7 @@
   }
 
   @media screen and (min-width: 1280px) {
-    width: 395px;
+    width: 393.5px;
     min-height: 634px;
   }
 
@@ -47,6 +46,13 @@
 
   &__link {
     text-decoration: none;
+
+    &:hover .film-card,
+    &:focus .film-card {
+      display: none;
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
+        0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+    }
   }
 
   &__img {
@@ -62,7 +68,7 @@
     font-size: 12px;
     line-height: 14px;
     text-transform: uppercase;
-    color: #000000;
+    color: $mainFontColor;
 
     @media screen and (min-width: 1280px) {
       font-size: 20px;
@@ -72,26 +78,38 @@
   &__thumb-info {
     display: flex;
   }
-  &__genre,
-  &__line,
-  &__year {
+  &__genre {
     // font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
     color: $colorAccent;
+    margin-right: 10px;
 
     @media screen and (min-width: 1280px) {
       font-size: 20px;
       line-height: 24px;
     }
   }
-  &__line {
-    margin: 0px 5px;
-  }
+  &__rating {
+    background-color: $colorAccent;
+    // line-height: 14px;
+    border-radius: 3px;
+    color: $backgroundColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 17px;
+    // margin: 0;
+    font-size: 12px;
 
-  &__raiting {
-    text-align: center;
+    @media screen and (min-width: 1280px) {
+      width: 46px;
+      height: 25px;
+      font-size: 18px;
+      border-radius: 5px;
+    }
   }
 }

@@ -1,12 +1,50 @@
 .footer {
-    height: 100px;
-    // background-color: ;
+    background-color:$bgcFooter;
+    padding: 48px 29px 36px;
+    
 
     @media screen and (min-width: 768px) {
-        height: 79px;
+        padding: 30px 0px;
     }
 
     @media screen and (min-width: 1280px) {
-        height: 77px;
+        padding: 29px 0px;
     }
+}
+.footer_container {
+    outline: none;
+
+    @media screen and (min-width:768px) {
+        display: flex;
+    }
+
+}
+
+.footer_text {
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #545454;
+
+    @media screen and (min-width: 768px) {
+        font-size: 16px;
+        line-height: 19px;
+        margin-left: auto;
+        margin-right: 0px;
+    }
+}
+
+.footer_text-developers{
+    margin-top: 10px;
+
+    @media screen and (min-width:768px) {
+        margin-top: 0px;
+        margin-right: auto;
+        margin-left: 5px;
+    }
+}
+.footer_text-svg {
+   fill: #FF6B08;
 }
