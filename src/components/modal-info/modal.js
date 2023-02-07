@@ -1,6 +1,7 @@
 import { fetchModalInfo } from './fetch-info';
 import { transformGenresOnModal } from '../film-card/fetchGenres';
 
+
 const URL_IMG = 'https://image.tmdb.org/t/p/w500';
 
 const refs = {
@@ -65,9 +66,13 @@ function OnOpenModal(e) {
 }
 
 // создание разметки
-function createModalsMarkup({ popularity, poster_path, genres, overview, original_title, vote_average, vote_count}) {
+function createModalsMarkup({ popularity, poster_path, genres, overview, original_title, vote_average, vote_count }) {
+  let poster = URL_IMG + poster_path;
+  if (!poster_path) {
+    poster = 'https://live.staticflickr.com/65535/52673964597_7ac974f3b4_k.jpg'
+  }
   const markup = `
-            <img class="modal__img" src="${URL_IMG}${poster_path}" alt="poster" />
+            <img class="modal__img" src="${poster}" alt="poster" />
             <div class="modal__major-container">
                 <h3 class="modal__title">${original_title}</h3>
                 <div class="modal__sheet">
@@ -92,8 +97,12 @@ function createModalsMarkup({ popularity, poster_path, genres, overview, origina
                 <p class="modal__about-descr">${overview}</p>
                 </div>
                 <ul class="modal__btn-container">
-                <li class="modal__btn modal__btn--watched">Add to Watched</li>
-                <li class="modal__btn modal__btn--queue">Add to queue</li>
+                  <li>
+                    <button type="button" class="modal__btn modal__btn--watched">Add to Watched</button>
+                  </li>
+                  <li>
+                    <button type="button" class="modal__btn modal__btn--queue">Add to queue</button>
+                  </li>
                 </ul>
             </div>
         </div>
