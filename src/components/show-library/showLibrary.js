@@ -1,40 +1,26 @@
-import {createFilmCardMarkap} from '../film-card/film-card-markup';
-
-// это удалить
-// import filmLocalStorage from './localStorageFilmQueue.json'
-// localStorage.setItem("filmLocal", JSON.stringify(filmLocalStorage));
-// const listLibraryEl = document.querySelector('ul[render="libraryCard"]')
-// const filmLocal = localStorage.getItem("filmLocal");
-// это удалить
-
-// это заменить на нормальное локальное хранилище
-const queueLocal = localStorage.getItem("queue");
-const filmParse = JSON.parse(filmLocal);
-// это заменить на нормальное локальное хранилище 
-
+import { createFilmCardMarkap } from '../film-card/film-card-markup';
+import { getFromStorage } from '../storage/storage';
 
 
 const listLibraryEl = document.querySelector('ul[render="libraryCard"]')
 
-
 const btnQueue = document.querySelector('button[data-btn="queue"]');
 const btnWatched = document.querySelector('button[data-btn="watched"]');
 
-listLibraryEl.insertAdjacentHTML('beforeend', createFilmCardMarkap(filmParse))
+btnQueue.addEventListener('click', (e) => showStorage(e.target.dataset.btn));
+btnWatched.addEventListener('click', (e) => showStorage(e.target.dataset.btn));
 
-btnQueue.addEventListener('click', (e) => showQueue(filmParse, e));
-btnWatched.addEventListener('click', (e) => showQueue(filmParse, e));
+function showStorage(name) {
+   if (name === 'queue') {
+      btnWatched.classList.remove("current");
+      btnQueue.classList.add("current");
+   } else {
+      btnWatched.classList.add("current");
+      btnQueue.classList.remove("current");
+   }
 
-function showQueue(data, e) {
-   btnWatched.classList.remove("current")
-   btnQueue.classList.remove("current")
-   listLibraryEl.innerHTML = '';
-
-   e.target.classList.add("current")
-   listLibraryEl.insertAdjacentHTML('beforeend', createFilmCardMarkap(data))
+   const data = Object.values(getFromStorage(name));
+   listLibraryEl.innerHTML = createFilmCardMarkap(data);
 };
 
-
-
-
-
+showStorage('watched');
