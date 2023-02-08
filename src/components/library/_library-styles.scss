@@ -1,4 +1,4 @@
-.container--header {
+.library__header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -13,9 +13,6 @@
 
   background-size: 100% 100%;
 
-  &--header {
-    padding-top: 40px;
-  }
   @media screen and (min-width: 1280px) {
     max-width: 1280px;
   }
@@ -149,6 +146,7 @@
   width: 100%;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 .library-btn__item {
   height: 42px;
