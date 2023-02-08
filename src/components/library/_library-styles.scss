@@ -1,81 +1,15 @@
 .library__header {
+  max-width: 1280px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  height: 230px;
-  margin-left: auto;
-  margin-right: auto;
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-
+  background: url(../images/libray-header-bcg_png.png) no-repeat center;
   background-size: 100% 100%;
 
-  @media screen and (min-width: 1280px) {
-    max-width: 1280px;
-  }
-  // Mobile screen
-  background-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.56),
-      rgba(0, 0, 0, 0.56)
-    ),
-    url(../components/library/library_images/libray-header-bcg_sm-@1x.jpg);
-
-  @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)
-      ),
-      url(../components/library/library_images/libray-header-bcg_sm-@2x.jpg);
-  }
-
-  // Tablet screen
-  @media screen and (min-width: 481px) {
-    height: 219px;
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)
-      ),
-      url(../components/library/library_images/libary-header-bcg_md-@1x.jpg);
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: linear-gradient(
-          to right,
-          rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)
-        ),
-        url(../components/library/library_images/libary-header-bcg_md-@2x.jpg);
-    }
-  }
-
-  // Desktop screen
-  @media screen and (min-width: 769px) {
-    height: 216px;
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)
-      ),
-      url(../components/library/library_images/libary-header-bcg_lg-@2x.jpg);
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: linear-gradient(
-          to right,
-          rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)
-        ),
-        url(../components/library/library_images/libary-header-bcg_lg-@2x.jpg);
-    }
+  @media only screen and (min-width: 768px) {
+    background: url(../images/libary-header-bcg_lg.png);
   }
 }
 
@@ -147,6 +81,16 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+
+  @media only screen and (max-width: 767px) {
+    margin-top: 60px;
+    margin-bottom: 62px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
 }
 .library-btn__item {
   height: 42px;
