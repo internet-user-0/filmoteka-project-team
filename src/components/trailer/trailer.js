@@ -2,12 +2,12 @@ import { fetchTrailer } from './fetch-trailer';
 import { filmId } from '../modal-info/modal';
 
 const openBtn = document.querySelector('.trailer-btn');
-const content = document.querySelector('.trailer-wrap');
+const content = document.querySelector('.modal-trailer');
 const backdrop = document.querySelector('.trailer-backdrop');
-const closeBtn = document.querySelector('.js-modal-close');
+// const closeBtn = document.querySelector('.js-modal-close');
 
 openBtn.addEventListener('click', onTrailerOpen);
-closeBtn.addEventListener('click', onTrailerClose);
+// closeBtn.addEventListener('click', onTrailerClose);
 backdrop.addEventListener('click', onBackdropClose);
 document.addEventListener('keydown', onEscapePress);
 
@@ -43,8 +43,8 @@ function onEscapePress(evt) {
   }
 }
 
-function createMarkup(key, name) {
-  const markup = `<h2 class="trailer-modal-title">${name}</h2>
+function createMarkup(key) {
+  const markup = `
       <iframe
         class="js-iframe"
       src="https://www.youtube.com/embed/${key}"
@@ -55,3 +55,4 @@ function createMarkup(key, name) {
 
   return content.insertAdjacentHTML('beforeend', markup);
 }
+
