@@ -26,11 +26,28 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+<<<<<<< Updated upstream
 
   z-index: 1000;
   padding: 48px 20px 40px;
   background-color: $backgroundColor;
   border-radius: 5px;
+=======
+    z-index: 1000;
+    justify-content: center;
+}
+
+
+.js-iframe {
+  position: relative;
+  display: block;
+
+  border-radius: 5px;
+  aspect-ratio: 16 / 9;
+  height: 70%;
+  width: 70%;
+}
+>>>>>>> Stashed changes
 
   width: 280px;
   height: 940px;
@@ -40,8 +57,14 @@
     padding: 40px 36px;
   }
 
+<<<<<<< Updated upstream
   @media screen and (min-width: 1279px) {
     width: 805px;
+=======
+   @media screen and (min-width: 1280px) {
+     bottom: 40%;
+  right: 700px;
+>>>>>>> Stashed changes
   }
 }
 
