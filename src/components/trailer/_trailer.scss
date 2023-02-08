@@ -42,10 +42,26 @@
 }
 
 .trailer-btn {
-  border: 1px solid #000000;
-  border-radius: 5px;
+ background: rgba(232, 6, 6, 0.5);
+  // background-color: transparent;
+  border: 2px solid #000000;
+  border-radius: 10px;
   cursor: pointer;
-}
+  @media screen and (min-width: 320px) and (max-width:767px) {
+     bottom: 67%;
+  right: 90px;
+  };
+
+  @media screen and (min-width: 768px) and (max-width:1279px) {
+     bottom: 44%;
+  right: 500px;
+  };
+
+   @media screen and (min-width: 1280px) {
+     bottom: 40%;
+  right: 550px;
+  }
+};
 
 .trailer-modal-title {
   margin-bottom: 25px;
@@ -55,4 +71,4 @@
   font-size: 20px;
   line-height: 23px;
   text-align: center;
-}
+};
