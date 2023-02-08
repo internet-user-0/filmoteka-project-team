@@ -1,15 +1,20 @@
 import {createFilmCardMarkap} from '../film-card/film-card-markup';
 
 // это удалить
-import filmLocalStorage from './localStorageFilmQueue.json'
-localStorage.setItem("filmLocal", JSON.stringify(filmLocalStorage));
-const listLibraryEl = document.querySelector('ul[render="libraryCard"]')
-const filmLocal = localStorage.getItem("filmLocal");
+// import filmLocalStorage from './localStorageFilmQueue.json'
+// localStorage.setItem("filmLocal", JSON.stringify(filmLocalStorage));
+// const listLibraryEl = document.querySelector('ul[render="libraryCard"]')
+// const filmLocal = localStorage.getItem("filmLocal");
 // это удалить
 
 // это заменить на нормальное локальное хранилище
+const queueLocal = localStorage.getItem("queue");
 const filmParse = JSON.parse(filmLocal);
 // это заменить на нормальное локальное хранилище 
+
+
+
+const listLibraryEl = document.querySelector('ul[render="libraryCard"]')
 
 
 const btnQueue = document.querySelector('button[data-btn="queue"]');
