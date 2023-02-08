@@ -44,6 +44,9 @@ function getMovie() {
       if (!data.length) {
         errorMessage.style.opacity = '1';
         setTimeout(errorInfoHidden, 3000);
+        setTimeout(() => {
+          hideSpinner(refs.spinnerGallery, refs.iconSearch);
+        }, 300);
         return;
       }
       setTimeout(() => {
