@@ -2,15 +2,14 @@ import debounce from 'lodash.debounce';
 import {createFilmCardMarkap} from '../film-card/film-card-markup';
 import {getMoviesByName} from "../../api.js";
 
-
 const searchForm = document.forms[0];
-const searchInput = searchForm[1]
-const searchButton = searchForm[2]
+const searchInput = searchForm[1];
+const searchButton = searchForm[2];
 const filmCardList = document.querySelector('.hero__list');
 
-const errorMessage = document.querySelector('.header_main__form__error')
-errorMessage.style.opacity = "0"
-errorMessage.style.transition = "opacity 0.5s"
+const errorMessage = document.querySelector('.header_main__form__error');
+errorMessage.style.opacity = '0';
+errorMessage.style.transition = 'opacity 0.5s';
 
 const ul = document.createElement('ul')
 ul.setAttribute('class', 'search-helper')
@@ -67,10 +66,14 @@ function getMovie() {
         let hiddenError = infoHidden(errorMessage)
         setTimeout(hiddenError, 3000)
         return
-      }
-      filmCardList.innerHTML = ''
 
-      filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(data))
+      }
+      setTimeout(() => {
+        hideSpinner(refs.spinnerGallery, refs.iconSearch);
+      }, 400);
+      filmCardList.innerHTML = '';
+
+      filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(data));
     })
     .catch(error => console.log(error));
 }
@@ -87,9 +90,3 @@ function infoHidden(el) {
   el.style.opacity = "0"
   el.style.transition = "opacity 0.5s"
 }
-
-
-
-
-
-

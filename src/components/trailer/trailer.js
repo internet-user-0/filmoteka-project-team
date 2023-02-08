@@ -1,10 +1,10 @@
 import { fetchTrailer } from './fetch-trailer';
+import { filmId } from '../modal-info/modal';
 
 const openBtn = document.querySelector('.trailer-btn');
 const content = document.querySelector('.trailer-wrap');
 const backdrop = document.querySelector('.trailer-backdrop');
 const closeBtn = document.querySelector('.js-modal-close');
-// let movieId = '8';
 
 openBtn.addEventListener('click', onTrailerOpen);
 closeBtn.addEventListener('click', onTrailerClose);
@@ -13,10 +13,7 @@ document.addEventListener('keydown', onEscapePress);
 
 function onTrailerOpen() {
   backdrop.classList.remove('is-hidden');
-  const card = document.querySelector('.film-card');
-  const movieId = card.getAttribute('data-action');
-
-  fetchTrailer(movieId)
+  fetchTrailer(filmId)
     .then(data => {
       let key = data.results[0].key;
       let name = data.results[0].name;
@@ -51,12 +48,10 @@ function createMarkup(key, name) {
       <iframe
         class="js-iframe"
       src="https://www.youtube.com/embed/${key}"
-      width="640"
-      height="360"
       frameborder="0"
      
       allow="autoplay; encrypted-media"
     ></iframe>`;
 
-  return content.insertAdjacentElement('beforeend', markup);
+  return content.insertAdjacentHTML('beforeend', markup);
 }
