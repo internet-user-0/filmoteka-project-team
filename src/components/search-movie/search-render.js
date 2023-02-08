@@ -1,3 +1,4 @@
+import debounce from 'lodash.debounce';
 import {createFilmCardMarkap} from '../film-card/film-card-markup';
 import {getMoviesByName} from "../../api.js";
 
@@ -11,37 +12,60 @@ const errorMessage = document.querySelector('.header_main__form__error')
 errorMessage.style.opacity = "0"
 errorMessage.style.transition = "opacity 0.5s"
 
-searchButton.addEventListener('click', (e) => {
+const ul = document.createElement('ul')
+ul.setAttribute('class', 'search-helper')
+searchForm.appendChild(ul)
+
+searchInput.addEventListener('input', renderListHelper)
+searchButton.addEventListener('click', renderSearchMovies)
+ul.addEventListener('click', moveValueToSearch)
+
+
+function renderSearchMovies(e) {
   e.preventDefault()
+  ul.innerHTML = ''
+
   if (!searchInput.value.trim()) {
     errorMessage.style.opacity = "1"
-    setTimeout(errorInfoHidden, 3000)
+    setTimeout(() => infoHidden(errorMessage), 2000)
+  }
+  getMovie()
+  searchForm.reset()
+}
 
-    return
+
+function renderListHelper(e) {
+  e.preventDefault()
+
+  if (!searchInput.value.trim()) {
+    infoHidden(ul)
   }
 
-  getMovie()
-
-  searchForm.reset()
-})
-searchInput.addEventListener('input', (e) => {
-  e.preventDefault()
   getMoviesByName(searchInput.value.trim(), 1)
     .then((data) => {
-      data.map(({title}) => {
-        console.log(title)
-      })
-    })
+      ul.innerHTML = data.map(({title, vote_average}) => {
+        return `<li class="search-helper__item">
+               ${title}
+                 <span class="search-helper__vote">${String(vote_average).padEnd(2, '.').padEnd(3, '0')}</span></li>`
+      }).join('')
 
+      ul.style.opacity = "1"
+      ul.style.transition = "opacity 0.5s"
+
+    })
     .catch(error => console.log(error))
-})
+
+
+}
+
 
 function getMovie() {
-  getMoviesByName(searchInput.value.trim(), 1)
+  getMoviesByName(searchInput.value.trim().toLowerCase(), 1)
     .then(data => {
       if (!data.length) {
         errorMessage.style.opacity = "1"
-        setTimeout(errorInfoHidden, 3000)
+        let hiddenError = infoHidden(errorMessage)
+        setTimeout(hiddenError, 3000)
         return
       }
       filmCardList.innerHTML = ''
@@ -51,7 +75,21 @@ function getMovie() {
     .catch(error => console.log(error));
 }
 
-function errorInfoHidden() {
-  errorMessage.style.opacity = "0"
+function moveValueToSearch(e) {
+  let setValue = e.target.textContent.slice(0, -4).trim()
+  searchInput.value = setValue
+  getMovie()
+  infoHidden(ul)
+  searchForm.reset()
 }
+
+function infoHidden(el) {
+  el.style.opacity = "0"
+  el.style.transition = "opacity 0.5s"
+}
+
+
+
+
+
 
