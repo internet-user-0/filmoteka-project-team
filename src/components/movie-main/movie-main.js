@@ -1,5 +1,7 @@
 import API from '../../api';
 import { createFilmCardMarkap } from '../film-card/film-card-markup';
+import { refs } from '../spiner/refs';
+import { showSpinner, hideSpinner } from '../spiner/spiner';
 
 const axios = require('axios').default;
 
@@ -25,6 +27,7 @@ function showMovie(page) {
 // ПОПУЛЯРНЫЕ ФИЛЬМЫ НА ГЛАВНОЙ СТРАНИЦЕ
 
 async function fetchPopularMovie(page) {
+  showSpinner(refs.spinnerGallery, refs.iconSearch);
   try {
     const response = await axios.get(
       `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`
@@ -37,7 +40,11 @@ async function fetchPopularMovie(page) {
     return response.data.results;
   } catch (error) {
     console.log(`${error}`);
+  } finally {
+    setTimeout(() => {
+      hideSpinner(refs.spinnerGallery, refs.iconSearch);
+    }, 300);
   }
 }
 
-export default {showMovie, fetchPopularMovie};
+export default { showMovie, fetchPopularMovie };
