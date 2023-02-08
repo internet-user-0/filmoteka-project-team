@@ -1,6 +1,10 @@
 import { fetchModalInfo } from './fetch-info';
 import { transformGenresOnModal } from '../film-card/fetchGenres';
-
+import {
+  addToStorage,
+  getFromStorage,
+  removeFromStorage,
+} from '../storage/storage';
 
 const URL_IMG = 'https://image.tmdb.org/t/p/w500';
 
@@ -9,16 +13,50 @@ const refs = {
   modal: document.querySelector('.modal-wrap'),
   filmList: document.querySelector('.hero__list'),
   btnClose: document.querySelector('.modal__cross-btn'),
-  body: document.querySelector('body')
-}
+  body: document.querySelector('body'),
+};
 // --виніс id в окрему змінну
-let filmId
+let filmId;
 
 const { backdrop, modal, filmList, btnClose, body } = refs;
 
 filmList.addEventListener('click', OnOpenModal);
 
+// додавання до сховища
+modal.addEventListener('click', onAddToWatchedLibrary);
+
+function onAddToWatchedLibrary(evt) {
+  evt.preventDefault();
+  fetchModalInfo(filmId).then(data => {
+    if (evt.target.classList.contains('modal__btn--watched')) {
+      let watchedFilmsData = [];
+      const getItemInStorage = getFromStorage('watchedNew');
+      if (!getItemInStorage) {
+        watchedFilmsData.push(data);
+      } else {
+        removeFromStorage('watchedNew');
+        watchedFilmsData.push(...getItemInStorage, data);
+      }
+      addToStorage('watchedNew', watchedFilmsData);
+      console.log(watchedFilmsData);
+    }
+    if (evt.target.classList.contains('modal__btn--queue')) {
+      let queueFilmsData = [];
+      const getItemInStorage = getFromStorage('queueNew');
+      if (!getItemInStorage) {
+        queueFilmsData.push(data);
+      } else {
+        removeFromStorage('queueNew');
+        queueFilmsData.push(...getItemInStorage, data);
+      }
+      addToStorage('queueNew', queueFilmsData);
+      console.log(queueFilmsData);
+    }
+  });
+}
+
 // обработчик событий
+
 function OnOpenModal(e) {
   e.preventDefault();
 
@@ -38,14 +76,14 @@ function OnOpenModal(e) {
 
   backdrop.classList.toggle('is-hidden');
 
-  document.addEventListener('keydown', onCloseEsc)
-    
+  document.addEventListener('keydown', onCloseEsc);
+
   function onCloseEsc(e) {
     if (e.code === 'Escape') {
       modal.innerHTML = '';
       backdrop.classList.add('is-hidden');
       body.classList.remove('scroll-hidden');
-      document.removeEventListener('keydown', onCloseEsc)
+      document.removeEventListener('keydown', onCloseEsc);
     }
   }
 
@@ -53,7 +91,7 @@ function OnOpenModal(e) {
     modal.innerHTML = '';
     backdrop.classList.add('is-hidden');
     body.classList.remove('scroll-hidden');
-  })
+  });
 
   backdrop.addEventListener('click', e => {
     if (e.target === backdrop) {
@@ -69,10 +107,18 @@ function OnOpenModal(e) {
 }
 
 // создание разметки
-function createModalsMarkup({ popularity, poster_path, genres, overview, original_title, vote_average, vote_count }) {
+function createModalsMarkup({
+  popularity,
+  poster_path,
+  genres,
+  overview,
+  original_title,
+  vote_average,
+  vote_count,
+}) {
   let poster = URL_IMG + poster_path;
   if (!poster_path) {
-    poster = 'https://live.staticflickr.com/65535/52673964597_7ac974f3b4_k.jpg'
+    poster = 'https://live.staticflickr.com/65535/52673964597_7ac974f3b4_k.jpg';
   }
   const markup = `
             <img class="modal__img" src="${poster}" alt="poster" />
@@ -87,12 +133,18 @@ function createModalsMarkup({ popularity, poster_path, genres, overview, origina
                     </ul>
                 <ul class="modal__list">
                     <li class="modal__item modal__item--flex modal__item--bold">
-                        <span class="modal__item--vote">${vote_average.toFixed(1)}</span> /
+                        <span class="modal__item--vote">${vote_average.toFixed(
+                          1
+                        )}</span> /
                         <span class="modal__item--votes">${vote_count}</span>
                     </li>
-                    <li class="modal__item modal__item--bold">${popularity.toFixed(1)}</li>
+                    <li class="modal__item modal__item--bold">${popularity.toFixed(
+                      1
+                    )}</li>
                     <li class="modal__item modal__item--bold">${original_title}</li>
-                    <li class="modal__item modal__item--bold">${transformGenresOnModal(genres)}</li>
+                    <li class="modal__item modal__item--bold">${transformGenresOnModal(
+                      genres
+                    )}</li>
                 </ul>
                 </div>
                 <div class="modal__about">
