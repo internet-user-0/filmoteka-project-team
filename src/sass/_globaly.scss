@@ -1,4 +1,8 @@
 // переменные
+
+html {
+  scroll-behavior: smooth;
+}
 $backgroundColor: #fff;
 
 $mainFontColor: #000;
@@ -19,12 +23,17 @@ $bgcFooter: #f7f7f7;
   overflow-y: hidden;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-family: $fontRoboto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
+  // overflow: hidden;
 }
 
 ul {
@@ -46,4 +55,3 @@ img {
   max-width: 100%;
   height: auto;
 }
-
