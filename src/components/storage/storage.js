@@ -12,7 +12,7 @@ export const addToStorage = (key, value) => {
 
 export const getFromStorage = key => {
   try {
-    return JSON.parse(localStorage.getItem(key));
+    return JSON.parse(localStorage.getItem(key) || '{}');
   } catch {
     console.error(error);
   }

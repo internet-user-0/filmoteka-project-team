@@ -3,7 +3,6 @@ import { transformGenresOnModal } from '../film-card/fetchGenres';
 import {
   addToStorage,
   getFromStorage,
-  removeFromStorage,
 } from '../storage/storage';
 
 const URL_IMG = 'https://image.tmdb.org/t/p/w500';
@@ -21,39 +20,6 @@ let filmId;
 const { backdrop, modal, filmList, btnClose, body } = refs;
 
 filmList.addEventListener('click', OnOpenModal);
-
-// додавання до сховища
-modal.addEventListener('click', onAddToWatchedLibrary);
-
-function onAddToWatchedLibrary(evt) {
-  evt.preventDefault();
-  fetchModalInfo(filmId).then(data => {
-    if (evt.target.classList.contains('modal__btn--watched')) {
-      let watchedFilmsData = [];
-      const getItemInStorage = getFromStorage('watchedNew');
-      if (!getItemInStorage) {
-        watchedFilmsData.push(data);
-      } else {
-        removeFromStorage('watchedNew');
-        watchedFilmsData.push(...getItemInStorage, data);
-      }
-      addToStorage('watchedNew', watchedFilmsData);
-      console.log(watchedFilmsData);
-    }
-    if (evt.target.classList.contains('modal__btn--queue')) {
-      let queueFilmsData = [];
-      const getItemInStorage = getFromStorage('queueNew');
-      if (!getItemInStorage) {
-        queueFilmsData.push(data);
-      } else {
-        removeFromStorage('queueNew');
-        queueFilmsData.push(...getItemInStorage, data);
-      }
-      addToStorage('queueNew', queueFilmsData);
-      console.log(queueFilmsData);
-    }
-  });
-}
 
 // обработчик событий
 
@@ -106,6 +72,43 @@ function OnOpenModal(e) {
   }
 }
 
+function updateButtons() {
+  document.querySelector('#watched-button').innerHTML = watchedButton();
+  document.querySelector('#queue-button').innerHTML = queueButton();
+}
+
+function watchedButton() {
+  if (filmId in getFromStorage('watched')) {
+    return `<button onClick="removeFrom('watched')" type="button" class="modal__btn modal__btn--watched">Remove from Watched</button>`
+  } else {
+    return `<button onClick="addTo('watched')" type="button" class="modal__btn modal__btn--watched">Add to Watched</button>`
+  }
+}
+
+function queueButton() {
+  if (filmId in getFromStorage('queue')) {
+    return `<button onClick="removeFrom('queue')" type="button" class="modal__btn modal__btn--watched">Remove from Queue</button>`
+  } else {
+    return `<button onClick="addTo('queue')" type="button" class="modal__btn modal__btn--watched">Add to Queue</button>`
+  }
+}
+
+window.addTo = (storageName) => {
+  fetchModalInfo(filmId).then(data => {
+    const storage = getFromStorage(storageName);
+    storage[filmId] = data;
+    addToStorage(storageName, storage);
+    updateButtons();
+  })
+}
+
+window.removeFrom = (storageName) => {
+  const storage = getFromStorage(storageName);
+  delete storage[filmId];
+  addToStorage(storageName, storage);
+  updateButtons();
+}
+
 // создание разметки
 function createModalsMarkup({
   popularity,
@@ -152,11 +155,11 @@ function createModalsMarkup({
                 <p class="modal__about-descr">${overview}</p>
                 </div>
                 <ul class="modal__btn-container">
-                  <li>
-                    <button type="button" class="modal__btn modal__btn--watched">Add to Watched</button>
+                  <li id="watched-button">
+                    ${watchedButton()}
                   </li>
-                  <li>
-                    <button type="button" class="modal__btn modal__btn--queue">Add to queue</button>
+                  <li id="queue-button">
+                    ${queueButton()}
                   </li>
                 </ul>
             </div>
