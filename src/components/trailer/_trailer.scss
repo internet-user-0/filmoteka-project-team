@@ -21,28 +21,30 @@
 }
 
 .modal-trailer {
-  color: #000;
-  position: absolute;
+  position: relative;
+  display: flex;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  z-index: 1000;
-  padding: 48px 20px 40px;
-  background-color: $backgroundColor;
+    z-index: 1000;
+}
+
+
+.js-iframe {
+  position: relative;
+  display: block;
+
   border-radius: 5px;
+  aspect-ratio: 16 / 9;
+  height: 100%;
+  width: 100%;
+}
 
-  width: 280px;
-  height: 940px;
-
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    width: 705px;
-    padding: 40px 36px;
-  }
-
-  @media screen and (min-width: 1279px) {
-    width: 805px;
-  }
+.trailer-btn {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .trailer-modal-title {
@@ -53,34 +55,4 @@
   font-size: 20px;
   line-height: 23px;
   text-align: center;
-
-  @media screen and (min-width: 1280px) {
-    font-size: 30px;
-    line-height: 35px;
-  }
-}
-
-
-.js-iframe {
-  display: block;
-  border-radius: 5px;
-
-  width: 240px;
-  height: 700px;
-
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    width: 633px;
-  }
-
-  @media screen and (min-width: 1279px) {
-    width: 765px;
-    height: 650px;
-  }
-}
-
-.trailer-btn {
-  border: 1px solid #000000;
-  border-radius: 5px;
-  cursor: pointer;
-
 }
