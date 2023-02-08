@@ -1,8 +1,9 @@
 import { createFilmCardMarkap } from '../film-card/film-card-markup';
 import { getFromStorage } from '../storage/storage';
 
-// это удалить
+
 const listLibraryEl = document.querySelector('ul[render="libraryCard"]')
+
 const btnQueue = document.querySelector('button[data-btn="queue"]');
 const btnWatched = document.querySelector('button[data-btn="watched"]');
 
