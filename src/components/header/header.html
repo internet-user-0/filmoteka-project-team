@@ -1,12 +1,6 @@
 <header class="header_main">
   <a class="header_main__logo" href="index.html">
-    <img
-      src="./images/logo.svg"
-      alt="logo"
-      title="Filmoteka"
-      width="24"
-      height="24"
-    />
+    <img src="./images/logo.svg" alt="logo" title="Filmoteka" width="24" height="24" />
     <span>Filmoteka</span>
   </a>
   <nav>
@@ -19,10 +13,19 @@
     <fieldset class="header_main__form__search">
       <input type="text" name="query" placeholder="Movie search" />
       <button type="submit">
-        <svg width="12" height="12">
+        <svg class="icon icon-search" width="12" height="12">
           <use href="./symbol-defs.svg#search"></use>
         </svg>
       </button>
+      <div class="spinner js-spinner-gallery visually-hidden">
+        <div class="loadingio-spinner-dual-ball">
+          <div class="ldio-6pxvxwbft19">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
     </fieldset>
     <div class="header_main__form__error" id="search_error">
       Search result not successful. Enter the correct movie name and try again
