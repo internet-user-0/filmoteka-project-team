@@ -261,6 +261,34 @@ ul {
 }
 
 // позиціонування кнопки трейлера
-.trailer-btn {
-  position: absolute;
-}
+.modal-info {
+position: absolute
+};
+
+
+ .trailer-btn {
+  position: relative;
+ background: rgba(232, 6, 6, 0.5);
+  // background-color: transparent;
+  width: 90px;
+  height: 70px;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 10000;
+  @media screen and (max-width:767px) {
+   bottom: -250px;
+   left: 90px;
+  };
+
+  @media screen and (min-width: 768px) and (max-width:1279px) {
+    bottom: -180px;
+   left: 170px;
+  };
+
+   @media screen and (min-width: 1280px) {
+   bottom: -250px;
+   left: 220px;
+  }
+};
+
