@@ -8,11 +8,17 @@ import { ITEM_PER_PAGE } from '../pagination/pagination';
 
 const listLibraryEl = document.querySelector('ul[render="libraryCard"]')
 
+
 const btnQueue = document.querySelector('button[data-btn="queue"]');
 const btnWatched = document.querySelector('button[data-btn="watched"]');
+const add = document.querySelector('.modal-wrap');
+// const btnRemove = document.querySelector('.modal-wrap');
+// console.log(btnRemove)
 
 btnQueue.addEventListener('click', (e) => showStorage(e.target.dataset.btn));
 btnWatched.addEventListener('click', (e) => showStorage(e.target.dataset.btn));
+// btnRemove.addEventListener('click', showStorage('watched'));
+
 
 let page = 1
 
@@ -27,7 +33,14 @@ function showStorage(name) {
    }
 
    const data = Object.values(getFromStorage(name));
-   console.log(data);
+
+   if (data.length === 0) {
+      listLibraryEl.innerHTML = '<li class="defalt"></li>';
+   }else{
+      listLibraryEl.innerHTML = createFilmCardMarkap(data);
+   }
+};
+
    listLibraryEl.innerHTML = createFilmCardMarkap(data.slice(0, ITEM_PER_PAGE));
 
    const totalResult = data.length;
@@ -38,6 +51,8 @@ function showStorage(name) {
          listLibraryEl.innerHTML = createFilmCardMarkap(data.slice(page === 1 ? 0 : (page - 1) * ITEM_PER_PAGE, page * ITEM_PER_PAGE));
         });
       }
+
+
 
 
 
