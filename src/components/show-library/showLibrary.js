@@ -35,7 +35,16 @@ function showStorage(name) {
    const data = Object.values(getFromStorage(name));
 
    if (data.length === 0) {
-      listLibraryEl.innerHTML = '<li class="defalt"></li>';
+      listLibraryEl.innerHTML = `<div class="container hero" id="spin">
+      <ul class="hero__list"></ul>
+      <div class="clear-list">
+      <h2 class="clear-list__tittle">Sorry...</h2>
+      <p class="clear-list__text">
+      No movies have been added yet. Let's go pick something to your liking
+      </p>
+      <a class="clear-list__link" href="./index.html">go to Home</a>
+      </div>
+   </div>`;
    }else{
       listLibraryEl.innerHTML = createFilmCardMarkap(data);
    }
