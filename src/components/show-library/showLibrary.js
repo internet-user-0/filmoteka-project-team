@@ -31,19 +31,6 @@ function showStorage(name) {
    }else{
       listLibraryEl.innerHTML = createFilmCardMarkap(data);
    }
-
-
-
-   add.addEventListener('click', (e) => {
-      console.log(e.target.classList.contains(".modal__btn--remove"))
-      
-      if(e.target.classList.contains('.modal__btn--remove')){
-         console.log(e.target.classList.contains(".modal__btn--remove"))
-         const queue = JSON.parse(localStorage.getItem('queue'));
-
-         listLibraryEl.innerHTML = createFilmCardMarkap(queue)
-      }
-   });
 };
 
 
