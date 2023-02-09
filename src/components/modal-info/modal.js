@@ -1,9 +1,6 @@
 import { fetchModalInfo } from './fetch-info';
 import { transformGenresOnModal } from '../film-card/fetchGenres';
-import {
-  addToStorage,
-  getFromStorage,
-} from '../storage/storage';
+import { addToStorage, getFromStorage } from '../storage/storage';
 
 const URL_IMG = 'https://image.tmdb.org/t/p/w500';
 
@@ -79,35 +76,35 @@ function updateButtons() {
 
 function watchedButton() {
   if (filmId in getFromStorage('watched')) {
-    return `<button onClick="removeFrom('watched')" type="button" class="modal__btn modal__btn--watched">Remove from Watched</button>`
+    return `<button onClick="removeFrom('watched')" type="button" class="modal__btn modal__btn--watched modal__btn--remove">Remove from Watched</button>`;
   } else {
-    return `<button onClick="addTo('watched')" type="button" class="modal__btn modal__btn--watched">Add to Watched</button>`
+    return `<button onClick="addTo('watched')" type="button" class="modal__btn modal__btn--watched">Add to Watched</button>`;
   }
 }
 
 function queueButton() {
   if (filmId in getFromStorage('queue')) {
-    return `<button onClick="removeFrom('queue')" type="button" class="modal__btn modal__btn--watched">Remove from Queue</button>`
+    return `<button onClick="removeFrom('queue')" type="button" class="modal__btn modal__btn--watched modal__btn--remove">Remove from Queue</button>`;
   } else {
-    return `<button onClick="addTo('queue')" type="button" class="modal__btn modal__btn--watched">Add to Queue</button>`
+    return `<button onClick="addTo('queue')" type="button" class="modal__btn modal__btn--watched">Add to Queue</button>`;
   }
 }
 
-window.addTo = (storageName) => {
+window.addTo = storageName => {
   fetchModalInfo(filmId).then(data => {
     const storage = getFromStorage(storageName);
     storage[filmId] = data;
     addToStorage(storageName, storage);
     updateButtons();
-  })
-}
+  });
+};
 
-window.removeFrom = (storageName) => {
+window.removeFrom = storageName => {
   const storage = getFromStorage(storageName);
   delete storage[filmId];
   addToStorage(storageName, storage);
   updateButtons();
-}
+};
 
 // создание разметки
 function createModalsMarkup({

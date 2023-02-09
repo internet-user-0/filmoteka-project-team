@@ -17,7 +17,7 @@ async function getMoviesByName(querySearch, page) {
       },
     });
 
-    return response.data.results
+    return response.data
 
   } catch (e) {
     console.log(e)
