@@ -3,6 +3,8 @@ import { createFilmCardMarkap } from '../film-card/film-card-markup';
 import { getMoviesByName } from '../../api.js';
 import { showSpinner, hideSpinner } from '../spiner/spiner';
 import { refs } from '../spiner/refs';
+import { paginationEl } from '../pagination/pagination';
+import { makePagination } from '../pagination/pagination';
 
 const searchForm = document.forms[0];
 const searchInput = searchForm[1];
@@ -12,6 +14,7 @@ const filmCardList = document.querySelector('.hero__list');
 const errorMessage = document.querySelector('.header_main__form__error');
 errorMessage.style.opacity = '0';
 errorMessage.style.transition = 'opacity 0.5s';
+let page = 1
 
 const ul = document.createElement('ul');
 ul.setAttribute('class', 'search-helper');
@@ -21,17 +24,51 @@ searchInput.addEventListener('input', debounce(renderListHelper, 500));
 searchButton.addEventListener('click', renderSearchMovies);
 ul.addEventListener('click', moveValueToSearch);
 
-function renderSearchMovies(e) {
+async function renderSearchMovies(e) {
   e.preventDefault();
+  const query = searchInput.value.trim();
   ul.innerHTML = '';
+  paginationEl.style.display = 'none';
+  page = 1
 
   if (!searchInput.value.trim()) {
     errorMessage.style.opacity = '1';
     setTimeout(() => infoHidden(errorMessage), 2000);
   }
-  getMovie();
-  searchForm.reset();
-}
+  // getMovie();
+  // searchForm.reset();
+
+  await getMoviesByName(query, page)
+    .then(data => {
+      const total = data.total_results;
+      
+      if (!total) {
+            errorMessage.style.opacity = '1';
+            setTimeout(() => infoHidden(errorMessage), 2000);
+      }
+      
+      if (total >= 1) {
+        filmCardList.innerHTML = '';
+        filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(data.results));
+        page +=1
+      makePagination(data.total_results, data.total_pages).on('afterMove', ({ page }) => {
+        getMoviesByName(query, page).then(data => {
+          console.log(data);
+          filmCardList.innerHTML = '';
+          filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(data.results));
+        });
+      }
+    );
+      }
+
+    })
+    .catch(error => console.log(error))
+    .finally(() => {
+        searchForm.reset();
+    });
+  }
+
+
 
 function renderListHelper(e) {
   e.preventDefault();
@@ -43,7 +80,7 @@ function renderListHelper(e) {
 
   getMoviesByName(searchInput.value.trim(), 1)
     .then(data => {
-      ul.innerHTML = data
+      ul.innerHTML = data.results
         .map(({ title, vote_average }) => {
           return `<li class="search-helper__item">${title}
         <span class="search-helper__vote">${String(vote_average)
@@ -60,9 +97,9 @@ function renderListHelper(e) {
 
 function getMovie() {
   showSpinner(refs.spinnerGallery, refs.iconSearch);
-  getMoviesByName(searchInput.value.trim().toLowerCase(), 1)
+  getMoviesByName(searchInput.value.trim().toLowerCase(), page)
     .then(data => {
-      if (!data.length) {
+      if (!data.results.length) {
         errorMessage.style.opacity = '1';
         setTimeout(() => infoHidden(), 3000);
         setTimeout(() => {
@@ -75,7 +112,7 @@ function getMovie() {
       }, 400);
       filmCardList.innerHTML = '';
 
-      filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(data));
+      filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(data.results));
     })
     .catch(error => console.log(error));
   setTimeout(() => {

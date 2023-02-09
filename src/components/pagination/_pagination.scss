@@ -1,0 +1,71 @@
+#tui-pagination-container{
+
+  height: 100%;
+  margin-bottom: 40px;
+  margin-top: 0;
+
+  @media (min-width: 768px) {
+    margin-bottom: 60px;
+  }
+
+  .tui-page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border: none;
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: inherit;
+
+    &:hover {
+      border-radius: 5px;
+      background-color: inherit;
+      transform: scale(120%);
+    }
+
+    &.tui-is-selected {
+      width: 40px;
+      height: 40px;
+      color: #ffffff;
+      background-color: #ff6b08;
+      border: none;
+      border-radius: 5px;
+      transform: scale(100%);
+    }
+  }
+
+  .tui-prev,
+  .tui-next {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    color: inherit;
+  }
+
+  .tui-next-is-ellip:hover {
+transform: scale(100%);
+  }
+  
+
+  .tui-first,
+  .tui-last {
+    display: none;
+  }
+
+
+  .tui-ico-prev {
+      background: url('../components/pagination/arrow-left.svg') no-repeat 0 0;
+      width: 16px;
+      height: 16px;
+    }
+
+  .tui-ico-next {
+      background: url('../components/pagination/arrow-right.svg') no-repeat 0 0;
+      width: 16px;
+      height: 16px;
+    }
+}
