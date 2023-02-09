@@ -39,7 +39,8 @@ function showStorage(name) {
    }else{
       listLibraryEl.innerHTML = createFilmCardMarkap(data);
    }
-};
+
+
 
    listLibraryEl.innerHTML = createFilmCardMarkap(data.slice(0, ITEM_PER_PAGE));
 
@@ -50,8 +51,11 @@ function showStorage(name) {
          console.log(page)
          listLibraryEl.innerHTML = createFilmCardMarkap(data.slice(page === 1 ? 0 : (page - 1) * ITEM_PER_PAGE, page * ITEM_PER_PAGE));
       });
+};
 
-      // 
+
+
+
 
 
 
