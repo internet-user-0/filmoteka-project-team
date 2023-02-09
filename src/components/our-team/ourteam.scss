@@ -3,8 +3,20 @@
 	padding:0px;
 	box-sizing: border-box;
   }
+
+  html, body {
+	overflow: hidden;
+	height: 100%;
+	box-sizing: border-box;
+	margin: 0;
+  }
+  
+
   
   body {
+	overflow-y: scroll;
+	width: calc(100% + 20px);
+	padding: 8px;
     background-color: #193c6d;
     // filter: progid: DXImageTransform.Microsoft.gradient(gradientType=1, startColorstr='#003073', endColorstr='#029797');
     background-image: url(//img.alicdn.com/tps/TB1d.u8MXXXXXXuXFXXXXXXXXXX-1900-790.jpg);
@@ -192,7 +204,10 @@
   
 
 
-
+.fab:hover{
+transform: scale(2.2);
+transition: .5s;
+}
 
 
 
@@ -469,6 +484,7 @@ font-size:14px;
 
 .team-block.style-two .inner-box .lower-content h3 a,
 .team-block.style-two .inner-box .social-icons li a{
+
 color:#ff9600;
 }
 
@@ -490,8 +506,11 @@ background-image: linear-gradient(to bottom, #FFEB3C 0%, #ff9600 100%);
 
 
 // BUTTON
+
 .btn-center{
-margin-left: 850px;
+
+
+// margin-left: 850px;
 margin-bottom: 20px;
 }
 
@@ -510,6 +529,17 @@ cursor: pointer;
  box-shadow: 6px 0px 0px #00e6f6;
  outline: transparent;
  position: relative;
+ @media screen and (max-width: 768px) {
+  font-size: 14px;
+  padding: 10px 15px;
+ }
+ @media screen and (max-width: 480px) {
+  font-size: 12px;
+  padding: 8px 12px;
+
+
+	
+ }
  
 }
 
