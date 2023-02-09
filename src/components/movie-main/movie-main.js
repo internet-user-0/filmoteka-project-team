@@ -17,7 +17,7 @@ const filmCardList = document.querySelector('.hero__list');
 async function showMovie(page = 1) {
   try {
     const data = await fetchPopularMovie(page);
-    console.log(data);
+
 
     filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(data.results));
 
@@ -46,8 +46,7 @@ async function fetchPopularMovie(page) {
     );
 
     page += 1;
-    console.log(response.data);
-    console.log(response.data.results);
+
 
     return response.data;
   } catch (error) {
