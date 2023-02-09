@@ -263,5 +263,63 @@ ul {
 
 // позиціонування кнопки трейлера
 .trailer-btn {
+  position: relative;
+  background: rgba(232, 6, 6, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+outline: none;
+  width: 150px;
+  height: 120px;
+  @media screen and (min-width: 320px) and (max-width:767px) {
+   bottom: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+  };
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    bottom: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+  }
+
+  @media screen and (min-width: 1280px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 110%);
+  }
+}
+
+.modal__btn-contain {
   position: absolute;
+
+  max-width: 100%;
+
+  max-height: 100%;
+  margin: 0;
+  display: block;
+  border-radius: 5px;
+
+  min-width: 240px;
+  max-height: 468px;
+
+  @media screen and (max-width: 767px) {
+    max-width: 330px;
+    max-height: 370px;
+  }
+
+  @media screen and (min-width: 768px) {
+    min-width: 260px;
+    max-height: 370px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    min-width: 375px;
+    max-height: 468px;
+  }
 }
