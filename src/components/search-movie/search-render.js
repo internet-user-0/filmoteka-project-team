@@ -78,6 +78,9 @@ function getMovie() {
       filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(data));
     })
     .catch(error => console.log(error));
+  setTimeout(() => {
+    hideSpinner(refs.spinnerGallery, refs.iconSearch);
+  }, 400);
 }
 
 function moveValueToSearch(e) {
