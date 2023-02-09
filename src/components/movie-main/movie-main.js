@@ -2,6 +2,7 @@ import API from '../../api';
 import { createFilmCardMarkap } from '../film-card/film-card-markup';
 import { refs } from '../spiner/refs';
 import { showSpinner, hideSpinner } from '../spiner/spiner';
+import { makePagination } from '../pagination/pagination';
 
 const axios = require('axios').default;
 
@@ -12,17 +13,28 @@ let page = 1;
 showMovie(page);
 
 const filmCardList = document.querySelector('.hero__list');
+// пагинация
+async function showMovie(page = 1) {
+  try {
+    const data = await fetchPopularMovie(page);
+    console.log(data);
 
-function showMovie(page) {
-  fetchPopularMovie(page)
-    .then(dataArrey => {
-      filmCardList.insertAdjacentHTML(
-        'beforeend',
-        createFilmCardMarkap(dataArrey)
-      );
-    })
-    .catch(error => console.log(error));
+    filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(data.results));
+
+    makePagination(data.total_results, data.total_pages).on(
+      'afterMove',
+      ({ page }) => {
+        fetchPopularMovie(page).then(data => {
+          filmCardList.innerHTML = '';
+          filmCardList.insertAdjacentHTML('beforeend', createFilmCardMarkap(data.results));
+        });
+      }
+    );
+  } catch (err) {
+    console.error(err);
+  }
 }
+showMovie().then();
 
 // ПОПУЛЯРНЫЕ ФИЛЬМЫ НА ГЛАВНОЙ СТРАНИЦЕ
 
@@ -37,7 +49,7 @@ async function fetchPopularMovie(page) {
     console.log(response.data);
     console.log(response.data.results);
 
-    return response.data.results;
+    return response.data;
   } catch (error) {
     console.log(`${error}`);
   } finally {
