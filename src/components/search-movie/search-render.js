@@ -1,6 +1,8 @@
 import debounce from 'lodash.debounce';
 import {createFilmCardMarkap} from '../film-card/film-card-markup';
 import {getMoviesByName} from "../../api.js";
+import {hideSpinner} from "../spiner/spiner";
+import {refs} from "../spiner/refs";
 
 const searchForm = document.forms[0];
 const searchInput = searchForm[1];
@@ -15,7 +17,7 @@ const ul = document.createElement('ul')
 ul.setAttribute('class', 'search-helper')
 searchForm.appendChild(ul)
 
-searchInput.addEventListener('input', renderListHelper)
+searchInput.addEventListener('input', debounce(renderListHelper, 500))
 searchButton.addEventListener('click', renderSearchMovies)
 ul.addEventListener('click', moveValueToSearch)
 
@@ -38,14 +40,14 @@ function renderListHelper(e) {
 
   if (!searchInput.value.trim()) {
     infoHidden(ul)
+    return
   }
 
   getMoviesByName(searchInput.value.trim(), 1)
     .then((data) => {
       ul.innerHTML = data.map(({title, vote_average}) => {
-        return `<li class="search-helper__item">
-               ${title}
-                 <span class="search-helper__vote">${String(vote_average).padEnd(2, '.').padEnd(3, '0')}</span></li>`
+        return `<li class="search-helper__item">${title}
+        <span class="search-helper__vote">${String(vote_average).padEnd(2, '.').padEnd(3, '0')}</span></li>`
       }).join('')
 
       ul.style.opacity = "1"
@@ -53,7 +55,6 @@ function renderListHelper(e) {
 
     })
     .catch(error => console.log(error))
-
 
 }
 
@@ -63,8 +64,7 @@ function getMovie() {
     .then(data => {
       if (!data.length) {
         errorMessage.style.opacity = "1"
-        let hiddenError = infoHidden(errorMessage)
-        setTimeout(hiddenError, 3000)
+        setTimeout(() => infoHidden(), 3000)
         return
 
       }
