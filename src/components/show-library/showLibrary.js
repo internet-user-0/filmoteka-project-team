@@ -12,7 +12,7 @@ const listLibraryEl = document.querySelector('ul[render="libraryCard"]')
 const btnQueue = document.querySelector('button[data-btn="queue"]');
 const btnWatched = document.querySelector('button[data-btn="watched"]');
 const add = document.querySelector('.modal-wrap');
-// const btnRemove = document.querySelector('.modal-wrap');
+const containerClear = document.querySelector('.clear');
 // console.log(btnRemove)
 
 btnQueue.addEventListener('click', (e) => showStorage(e.target.dataset.btn));
@@ -35,22 +35,13 @@ function showStorage(name) {
    const data = Object.values(getFromStorage(name));
 
    if (data.length === 0) {
-      listLibraryEl.innerHTML = `<div class="container hero" id="spin">
-      <ul class="hero__list"></ul>
-      <div class="clear-list">
-      <h2 class="clear-list__tittle">Sorry...</h2>
-      <p class="clear-list__text">
-      No movies have been added yet. Let's go pick something to your liking
-      </p>
-      <a class="clear-list__link" href="./index.html">go to Home</a>
-      </div>
-   </div>`;
-   }else{
-      listLibraryEl.innerHTML = createFilmCardMarkap(data);
+      containerClear.classList.remove('is-hidden');
+   } else {
+      containerClear.classList.add('is-hidden');
    }
 
 
-
+   listLibraryEl.innerHTML = '';
    listLibraryEl.innerHTML = createFilmCardMarkap(data.slice(0, ITEM_PER_PAGE));
 
    const totalResult = data.length;
