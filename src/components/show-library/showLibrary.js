@@ -42,15 +42,15 @@ function showStorage(name) {
 
 
 
-   // listLibraryEl.innerHTML = createFilmCardMarkap(data.slice(0, ITEM_PER_PAGE));
+   listLibraryEl.innerHTML = createFilmCardMarkap(data.slice(0, ITEM_PER_PAGE));
 
-   // const totalResult = data.length;
-   // makeLibraryPagination(totalResult).on(
-   //    'afterMove',
-   //    ({ page }) => {
-   //       console.log(page)
-   //       listLibraryEl.innerHTML = createFilmCardMarkap(data.slice(page === 1 ? 0 : (page - 1) * ITEM_PER_PAGE, page * ITEM_PER_PAGE));
-   //    });
+   const totalResult = data.length;
+   makeLibraryPagination(totalResult).on(
+      'afterMove',
+      ({ page }) => {
+         console.log(page)
+         listLibraryEl.innerHTML = createFilmCardMarkap(data.slice(page === 1 ? 0 : (page - 1) * ITEM_PER_PAGE, page * ITEM_PER_PAGE));
+      });
 };
 
 
