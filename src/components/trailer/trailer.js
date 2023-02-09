@@ -4,10 +4,8 @@ import { filmId } from '../modal-info/modal';
 const openBtn = document.querySelector('.trailer-btn');
 const content = document.querySelector('.modal-trailer');
 const backdrop = document.querySelector('.trailer-backdrop');
-// const closeBtn = document.querySelector('.js-modal-close');
 
 openBtn.addEventListener('click', onTrailerOpen);
-// closeBtn.addEventListener('click', onTrailerClose);
 backdrop.addEventListener('click', onBackdropClose);
 document.addEventListener('keydown', onEscapePress);
 
